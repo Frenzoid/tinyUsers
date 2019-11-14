@@ -1,0 +1,7 @@
+{
+  "name": "tinyUsers",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
