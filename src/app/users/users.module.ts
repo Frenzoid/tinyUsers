@@ -6,7 +6,7 @@ import { UsersPageRoutingModule } from './users-routing.module';
 import { UsersPage } from './users.page';
 import { UserComponent } from './user/user.component';
 import { UserService } from '../services/user.service';
-import { HttpClient } from '@angular/common/http';
+import { TagService } from '../services/tag.service';
 
 @NgModule({
   imports: [
@@ -16,6 +16,6 @@ import { HttpClient } from '@angular/common/http';
     UsersPageRoutingModule
   ],
   declarations: [UsersPage, UserComponent],
-  providers: [UserService]
+  providers: [UserService, TagService]
 })
 export class UsersPageModule {}

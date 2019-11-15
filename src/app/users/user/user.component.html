@@ -4,6 +4,7 @@
     </ion-card-header>
   
     <ion-card-content>
-      {{user.createdAt}} - {{user.IdUser}}
+      {{user.createdAt}} <strong>{{user.id}}</strong>
+      <i *ngFor="let tag of user.tags"> {{tag.name}} </i>
     </ion-card-content>
   </ion-card>

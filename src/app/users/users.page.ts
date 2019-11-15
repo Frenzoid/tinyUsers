@@ -3,6 +3,8 @@ import IUser from '../interfaces/IUser';
 import { UserService } from '../services/user.service';
 import { IonRefresher } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { TagService } from '../services/tag.service';
+import ITag from '../interfaces/ITag';
 
 @Component({
   selector: 'app-users',
@@ -11,10 +13,12 @@ import { ToastController } from '@ionic/angular';
 })
 export class UsersPage implements OnInit {
 
-  constructor(public userService: UserService, public toastController: ToastController) { }
+  constructor(public userService: UserService, public tagService: TagService, public toastController: ToastController) { }
   @ViewChild('refresherRef', {static: false}) refresherRef: IonRefresher;
 
   users: IUser[];
+  tags: ITag[];
+  filtersHidden = true;
 
   ngOnInit() {
     this.userService.getUsers().subscribe(
@@ -23,17 +27,32 @@ export class UsersPage implements OnInit {
     }, (err: string[]) => {
       this.showToastError(err);
     });
+
+    this.tagService.getTags().subscribe(
+    (tags: ITag[]) => {
+      this.tags = tags;
+    }, (err: string[]) => {
+      this.showToastError(err);
+    });
   }
 
   doRefresh() {
+    console.log(this.tags);
+
     this.userService.getUsers().subscribe(
     (users: IUser[]) => {
+      console.log(users);
       this.users = users;
       this.refresherRef.complete();
     }, (err: string[]) => {
       this.showToastError(err);
       this.refresherRef.complete();
     });
+  }
+
+  showHideF() {
+    this.filtersHidden = !this.filtersHidden;
+    console.log(this.filtersHidden);
   }
 
   async showToastError(err) {

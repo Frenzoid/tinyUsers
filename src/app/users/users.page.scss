@@ -1,0 +1,11 @@
+.buttons {
+  width: 100%;
+  flex-flow: wrap;
+  ion-button {
+    width: 49%;
+  }
+}
+
+.hidden {
+  height: 0px;
+}

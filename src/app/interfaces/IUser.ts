@@ -1,8 +1,10 @@
 
+import ITag from './ITag';
 export default interface IUser {
   name: string;
   nickname: string;
-  IdUser: number;
+  id: number;
   deleted: boolean;
   createdAt: number;
+  tags: ITag[];
 }
