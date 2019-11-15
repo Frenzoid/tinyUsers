@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher #refresherRef slot="fixed" (ionRefresh)="doRefresh()">
+    <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">      
+    </ion-refresher-content>
+  </ion-refresher>
+
   <app-user *ngFor="let user of users" [user]="user"></app-user>
 </ion-content>
