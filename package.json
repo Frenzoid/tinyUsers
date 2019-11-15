@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev": "ionic serve",
-    "mdev": "ionic cordova run --device -c -i"
+    "mdev": "ionic cordova run --device -l -c"
   },
   "private": true,
   "dependencies": {
