@@ -29,4 +29,8 @@
   </ion-refresher>
 
   <app-user *ngFor="let user of users" [user]="user"></app-user>
+
 </ion-content>
+<ion-footer no-shadow>
+  <ion-button size="full" color="primary" [routerLink]="['/pathfromto']" routerLinkActive="router-link-active">Go to geolocation test</ion-button>
+</ion-footer>

@@ -5,6 +5,7 @@ import { IonRefresher } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { TagService } from '../services/tag.service';
 import ITag from '../interfaces/ITag';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -13,11 +14,16 @@ import ITag from '../interfaces/ITag';
 })
 export class UsersPage implements OnInit {
 
-  constructor(public userService: UserService, public tagService: TagService, public toastController: ToastController) { }
+  constructor(
+    public router: Router,
+    public userService: UserService,
+    public tagService: TagService,
+    public toastController: ToastController) { }
+    
   @ViewChild('refresherRef', {static: false}) refresherRef: IonRefresher;
 
-  users: IUser[];
-  tags: ITag[];
+  users: IUser[] = [];
+  tags: ITag[] = [];
   filtersHidden = true;
 
   ngOnInit() {
@@ -53,6 +59,10 @@ export class UsersPage implements OnInit {
   showHideF() {
     this.filtersHidden = !this.filtersHidden;
     console.log(this.filtersHidden);
+  }
+
+  gotopath() {
+    this.router.navigate(['../pathfromto']);
   }
 
   async showToastError(err) {
